@@ -25,6 +25,18 @@ class App extends Component {
 
   render() {
     const { lat, lng, breweries } = this.state;
+
+    return (
+      <div className="words">
+        <h1>Nearest Breweries</h1>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" name="address" placeholder="Enter Address" />
+          <button type="submit">Search</button>
+        </form>
+        {lat && lng && <Map lat={lat} lng={lng} breweries={breweries} />}
+        {breweries.length > 0 && <Breweries breweries={breweries} />}
+      </div>
+    );
   }
 }
 
